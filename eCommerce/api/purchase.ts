@@ -12,7 +12,7 @@ export const createPurchase = async (
 ): Promise<PurchaseResponse> => {
   const serializedCart = cartItems.map((item) => ({
     ...item,
-    image: typeof item.image === "string" ? item.image : "placeholder.jpg",
+    image: typeof item.image === "string" ? item.image : "",
   }));
 
   const response = await axios.post("http://localhost:3001/purchase", {

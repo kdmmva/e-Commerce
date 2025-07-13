@@ -1,6 +1,5 @@
 import bodyParser from "body-parser";
 import crypto from "crypto";
-import fs from "fs";
 import jsonServer from "json-server";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -9,9 +8,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const dbPath = path.join(__dirname, "db.json");
-const initialData = { users: [] };
-fs.writeFileSync(dbPath, JSON.stringify(initialData, null, 2));
-console.log("⚠️ db.json rewritten to initial state");
+// const initialData = { users: [] };
+// fs.writeFileSync(dbPath, JSON.stringify(initialData, null, 2));
 
 const server = jsonServer.create();
 const router = jsonServer.router(dbPath);
@@ -88,7 +86,7 @@ server.post("/purchase", (req, res) => {
     id: crypto.randomUUID(),
     items: cartItems.map((item) => ({
       ...item,
-      image: typeof item.image === "string" ? item.image : "image-placeholder.jpg",
+      image: typeof item.image === "string" ? item.image : "",
     })),
     total,
     date: new Date().toISOString(),

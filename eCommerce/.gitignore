@@ -53,8 +53,7 @@ pnpm-debug.log*
 # Editor directories and files
 
 # Visual Studio Code settings — игнорируем всё кроме settings.json
-.vscode/*
-!.vscode/settings.json
+.vscode/
 
 .idea/
 *.sublime-project
